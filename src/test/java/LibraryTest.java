@@ -11,6 +11,7 @@ public class LibraryTest {
     Book book2;
     Book book3;
     Book book4;
+    Book book5;
     Library library;
     Student student1;
     Student student2;
@@ -21,6 +22,7 @@ public class LibraryTest {
         book2 = new Book("American Psycho", Genre.DRAMA);
         book3 = new Book("War and Peace", Genre.CLASSICS);
         book4 = new Book("A Peoples Tragedy", Genre.HISTORICAL);
+        book5 = new Book("Catherine the Great", Genre.HISTORICAL);
         library = new Library("Edinburgh", 2);
         student1 = new Student("Richard Nixon", 3);
         student2 = new Student("Ronald Reagan", 0);
@@ -120,6 +122,17 @@ public class LibraryTest {
         library.addBook(book2);
         assertEquals("Yes we have 1984 in stock.",student1.searchLibrary(library, book1));
         assertEquals("Sorry we don't have War and Peace in stock.",student1.searchLibrary(library, book3));
+    }
+
+    @Test
+    public void canSearchForGenre() {
+        library.addBook(book4);
+        library.addBook(book5);
+        ArrayList<Book> expected = new ArrayList<>();
+        expected.add(book4);
+        expected.add(book5);
+        assertEquals(expected, student1.searchGenre(library, Genre.HISTORICAL));
+
     }
 
 

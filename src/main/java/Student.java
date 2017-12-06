@@ -57,4 +57,15 @@ public class Student {
                     String output2 = String.format("Sorry we don't have %s in stock.", book.getTitle());
                     return output2;
         }
+
+    public ArrayList<Book> searchGenre(Library library, Genre genre) {
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book stock : library.libraryContents()) {
+            if (genre == stock.getGenre()) {
+                results.add(stock);
+                }
+            }
+           return results;
+        }
+
 }
