@@ -62,8 +62,10 @@ public class LibraryTest {
     @Test
     public void canSeeContentsOfLibrary() {
         library.addBook(book1);
+        library.addBook(book2);
         ArrayList<Book> expected = new ArrayList<>();
         expected.add(book1);
+        expected.add(book2);
         assertEquals(expected, library.libraryContents());
     }
 
@@ -86,6 +88,19 @@ public class LibraryTest {
     }
 
     @Test
+    public void canSeeAllBooksOnLoan() {
+        library.addBook(book1);
+        library.addBook(book2);
+        student1.takeOutBook(library, book1);
+        student1.takeOutBook(library, book2);
+        ArrayList<Book> expected = new ArrayList<>();
+        expected.add(book1);
+        expected.add(book2);
+        assertEquals(expected,student1.booksOnLoan());
+
+    }
+
+    @Test
     public void checkMaximumBooks_True() {
         assertEquals(true, student2.maximumCapacity());
     }
@@ -97,6 +112,14 @@ public class LibraryTest {
         student1.returnBook(library, book1);
         assertEquals(0, student1.numberOfBooks());
         assertEquals(1, library.countBooks());
+    }
+
+    @Test
+    public void canSearchForBooks() {
+        library.addBook(book1);
+        library.addBook(book2);
+        assertEquals("Yes we have 1984 in stock.",student1.searchLibrary(library, book1));
+        assertEquals("Sorry we don't have War and Peace in stock.",student1.searchLibrary(library, book3));
     }
 
 

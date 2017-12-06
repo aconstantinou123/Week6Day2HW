@@ -31,10 +31,9 @@ public class Library {
         }
     }
 
-    public Book removeBooks(Book book) {
+    public void removeBooks(Book book) {
          Book bookCopy = book;
          this.contents.remove(book);
-         return bookCopy;
     }
 
 

@@ -40,4 +40,21 @@ public class Student {
             library.addBook(book);
         }
     }
+
+    public ArrayList<Book> booksOnLoan() {
+        ArrayList<Book> onLoanList = new ArrayList<>();
+        onLoanList.addAll(onLoan);
+        return onLoanList;
+    }
+
+    public String searchLibrary(Library library, Book book) {
+        for (Book stock : library.libraryContents()) {
+                if (book.getTitle() == stock.getTitle()) {
+                    String output = String.format("Yes we have %s in stock.", book.getTitle());
+                    return output;
+                    }
+                }
+                    String output2 = String.format("Sorry we don't have %s in stock.", book.getTitle());
+                    return output2;
+        }
 }
